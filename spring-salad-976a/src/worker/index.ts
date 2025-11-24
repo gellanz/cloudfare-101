@@ -9,4 +9,9 @@ app.get("/random_color", (c) => {
     return c.json({ color: `rgb(${red}, ${green}, ${blue})` });
 })
 
+app.get("/customers", async (c) => {
+    const customers = await c.env.spring_d1.prepare("SELECT * FROM Customers").all();
+    return c.json(customers.results);
+})
+
 export default app;

@@ -47,5 +47,13 @@
 	"assets": {
 		"directory": "./dist/client",
 		"not_found_handling": "single-page-application"
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "spring_d1",
+			"database_name": "spring-d1",
+			"database_id": "46e79181-0b36-4acd-8079-b80255490585",
+			"remote": true
+		}
+	]
 }

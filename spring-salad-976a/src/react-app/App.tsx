@@ -11,7 +11,7 @@ function App() {
 	const [count, setCount] = useState(0);
 	const [name, setName] = useState("unknown");
 	const [color, setColor] = useState("unknown");
-
+	const [customers, setCustomers] = useState([]);
 	return (
 		<>
 			<div>
@@ -74,6 +74,29 @@ function App() {
 				</p>
 			</div>
 			<p className="read-the-docs">Click on the logos to learn more</p>
+			<div className="card">
+				<button
+					onClick={async () => {
+						const res = await fetch("/customers");
+						const data = await res.json();
+						setCustomers(data);
+						console.log(data); // This will log the fetched data
+					}}
+					aria-label="get customers"
+				>
+					Get customers
+				</button>
+				{customers && customers.length > 0 && (
+					<div>
+						<h3>Customers:</h3>
+						<ul>
+							{customers.map((customer: any, index: number) => (
+								<li key={index}>{JSON.stringify(customer)}</li>
+							))}
+						</ul>
+					</div>
+				)}
+			</div>
 		</>
 	);
 }
